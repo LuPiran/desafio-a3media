@@ -1,0 +1,79 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
+import "../../styles/paginatemplate2.css"  // Novo arquivo de estilo para o template2
+
+//  Exporta getStaticPaths() corretamente!
+// Esta função gera os caminhos para cada arquivo .md baseado no nome do arquivo
+export async function getStaticPaths() {
+
+  // Define o diretório onde os arquivos .md estão localizados
+  const contentDir = path.join(process.cwd(), 'content', 'paginatemplate2');
+  // Lê todos os arquivos do diretório
+  const files = fs.readdirSync(contentDir);
+
+  const paths = files.map((file) => ({
+    params: { id: path.parse(file).name },
+  }));
+
+  return paths;
+}
+
+const { id } = Astro.params;
+
+// Lê o arquivo .md
+const filePath = path.join(process.cwd(), 'content', 'paginatemplate2', `${id}.md`);
+const fileContent = fs.readFileSync(filePath, 'utf-8');
+const { data } = matter(fileContent);
+
+//  Garante que o body seja tratado como string
+const paragrafos = String(data.body).split('\n').filter(p => p.trim().length > 0);
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{data.titulo}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{data.titulo}</h1>
+
+      <!-- Vídeo fixo -->
+      <div class="video-container">
+        <video width="100%" controls>
+          <source src={data.video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <!-- Imagem fixa abaixo do vídeo -->
+      <div class="image-container">
+        <img src={data.imagem} alt="Imagem fixa" />
+      </div>
+
+      <div class="text-content">
+        <ul>
+          {paragrafos.map(paragrafo => <li>{paragrafo}</li>)}  <!-- Renderiza como lista não ordenada -->
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy | </a>
+        <a href="#">Terms and Conditions | </a>
+        <a href="#">Disclaimer | </a>
+        <a href="#">References | </a>
+        <a href="#">Returns | </a>
+        <a href="#">Refunds | </a>
+        <a href="#">Contact | </a>
+        <a href="#">Shipping Policy</a>
+      </div>
+      <p>All rights reserved.</p>
+      <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>
+      <p>The content of this site is for informational purposes only, and is not intended to replace professional medical advice, diagnosis or treatment. Always seek the advice of your doctor or other qualified health care professional about a medical condition, a suspected medical condition, and before starting a diet, exercise, or supplementation program or take or stop a medication.</p>
+    </footer>
+  </body>
+</html>

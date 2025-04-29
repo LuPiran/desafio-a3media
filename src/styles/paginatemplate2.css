@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video-container {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+video {
+  width: 100%;
+  max-height: 500px; /* Ajuste a altura conforme necessário */
+  border-radius: 8px;
+}
+
+.image-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-content p {
+  margin-bottom: 1.8rem; /* aumenta a distância entre os parágrafos */
+  line-height: 1.8;       /* melhora a altura da linha */
+  font-size: 1.05rem;     /* deixa o texto mais confortável de ler */
+}
+
+/* Divisão da lista em duas colunas */
+.text-content ul {
+  padding-left: 0;  /* Remove o recuo inicial */
+  list-style-type: none; /* Remove os marcadores de lista */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Divide em 2 colunas */
+  gap: 10px; /* Reduz o espaçamento entre os itens da lista */
+  margin-bottom: 1rem; /* Menos espaçamento entre as listas */
+}
+
+.text-content li {
+  font-size: 0.9rem; /* Texto menor */
+  line-height: 1.4;   /* Menos altura entre as linhas */
+  color: #808080;  /* Cor cinza para o texto */
+  padding-left: 20px; /* Adiciona recuo à esquerda para os itens */
+  position: relative;
+}
+
+/* Adiciona o ponto (marcador) antes de cada item da lista */
+.text-content li::before {
+  content: "•";  /* Adiciona o ponto */
+  position: absolute;
+  left: 0;
+  color: #808080;  /* Cor do ponto igual à cor do texto */
+  font-size: 1.2rem;  /* Ajuste o tamanho do ponto */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.button-container {
+  margin: 2rem 0;
+}
+
+.button-container a {
+  background-color: #00b140;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.text-content {
+  text-align: left;
+  margin: 2rem 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 0.8rem;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.footer-links {
+  font-size: 1.0rem;
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: underline;
+  margin: 0 10px;
+}

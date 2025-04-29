@@ -1,0 +1,20 @@
+{
+  "name": "desafio-a3media",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.7",
+    "tinacms": "^2.7.5"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@tinacms/cli": "^1.9.5",
+    "@types/node": "^22.15.3"
+  }
+}

@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+
+  .text-content p {
+    margin-bottom: 1.8rem; /* aumenta a distância entre os parágrafos */
+    line-height: 1.8;       /* melhora a altura da linha */
+    font-size: 1.05rem;     /* deixa o texto mais confortável de ler */
+  }
+
+  .button-container {
+    margin: 2rem 0;
+  }
+  .button-container a {
+    background-color: #00b140;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .text-content {
+    text-align: left;
+    margin: 2rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  .text-content p {
+    margin-bottom: 1.5rem;
+  }
+  footer {
+    background-color: #f5f6f7;
+    color: #333;
+    font-size: 0.8rem;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .footer-links {
+    margin-top: 1rem;
+  }
+  .footer-links a {
+    color: inherit;
+    text-decoration: underline;
+    margin: 0 10px;
+  }
+  

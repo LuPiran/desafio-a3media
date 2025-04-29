@@ -1,0 +1,70 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
+import "../../styles/paginatemplate1.css"
+
+// 🔥 Exporta getStaticPaths() corretamente!
+export async function getStaticPaths() {
+  const contentDir = path.join(process.cwd(), 'content', 'paginatemplate1');
+  const files = fs.readdirSync(contentDir);
+
+  const paths = files.map((file) => ({
+    params: { id: path.parse(file).name },
+  }));
+
+  return paths;
+}
+
+const { id } = Astro.params;
+
+// Lê o arquivo .md
+const filePath = path.join(process.cwd(), 'content', 'paginatemplate1', `${id}.md`);
+const fileContent = fs.readFileSync(filePath, 'utf-8');
+const { data } = matter(fileContent);
+
+// Garante que o body seja tratado como string
+const paragrafos = String(data.body).split('\n').filter(p => p.trim().length > 0);
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{data.titulo}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{data.titulo}</h1>
+
+      <img src={data.imagem} alt="Imagem fixa do template" />
+
+      <div class="button-container">
+        <a href="#">Click Here to Watch The Video</a>
+      </div>
+
+      <div class="text-content">
+        {paragrafos.map(paragrafo => <p>{paragrafo}</p>)}
+      </div>
+
+      <div class="button-container">
+        <a href="#">Click Here to Watch The Video</a>
+      </div>
+    </main>
+
+    <footer>
+      <p>Copyright 2025 by getflowempower.com. All rights reserved.</p>
+      <p>This site is not a part of the Youtube website or Youtube Inc. Additionally, This site is NOT endorsed by Youtube in any way. YOUTUBE is a trademark of YOUTUBE, Inc.</p>
+      <p><strong>FDA Compliance</strong></p>
+      <p>The information on this website has not been evaluated by the Food & Drug Administration or any other medical body...</p>
+      <p><strong>Results May Vary:</strong> The weight loss results testimonials are in no way a guarantee of results...</p>
+      <p><strong>Marketing Disclosure:</strong> This website is a market place...</p>
+      <div class="footer-links">
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms Of Service</a>
+      </div>
+    </footer>
+  </body>
+</html>
+

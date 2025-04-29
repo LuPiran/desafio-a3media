@@ -1,0 +1,23 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+const { id } = Astro.params;
+const conteudo = JSON.parse(
+  fs.readFileSync(
+    path.resolve(`./content/paginatemplate1/${id}.json`),
+    'utf-8'
+  )
+);
+---
+
+<html>
+  <head>
+    <title>{conteudo.titulo}</title>
+  </head>
+  <body>
+    <h1>{conteudo.titulo}</h1>
+    <p>{conteudo.descricao}</p>
+    <img src={conteudo.imagem} alt="Imagem gerada" />
+  </body>
+</html>
